@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+
+.card {
+  border-radius: 5px;
+}
+
+.card-container {
+  background: $white;
+  padding: 20px;
+
+  &--gutter {
+    padding: 40px;
+  }
+}

@@ -1,0 +1,8 @@
+@import "../../../../styles/variables";
+
+.header {
+  background: $white;
+  height: 60px;
+  display: flex;
+  box-shadow: 2px 5px 5px #afafaf;
+}

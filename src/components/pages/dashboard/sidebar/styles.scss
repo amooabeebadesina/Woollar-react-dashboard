@@ -1,0 +1,63 @@
+@import "../../../../styles/variables";
+
+.sidebar-container {
+  color: $white;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar__logo {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: $logoText;
+  text-align: center;
+  font-size: $base-font-size + 3;
+  font-weight: $base-font-weight + 100;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__link {
+
+  padding:15px 20px 15px 25px;
+  font-weight: 600;
+  cursor: pointer;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background: $hoverBackground;
+  }
+}
+
+.sidebar-logout {
+  width: 205px;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid grey;
+  z-index: 2;
+  padding:15px 20px 15px 25px;
+  font-weight: 600;
+  cursor: pointer;
+  background: $primaryColor;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: $hoverBackground;
+  }
+}

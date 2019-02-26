@@ -1,0 +1,21 @@
+
+@import "../../../styles/variables";
+
+.login-container {
+  background: $greyBackground;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-form {
+  width: 500px;
+
+  @media all and (max-width: $smallTablet) {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+

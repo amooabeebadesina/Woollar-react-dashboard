@@ -1,0 +1,26 @@
+@import "../../../styles/variables";
+
+.button {
+  border-radius: 5px;
+  color: $white;
+  height: 40px;
+  font-size: $base-font-size + 2;
+  cursor: pointer;
+
+  &:hover {
+    background: darken($btn-blue, 5);
+  }
+
+  &--lg {
+    width: 100%;
+  }
+
+  &--blue {
+    background: $btn-blue;
+  }
+
+  &--transparent {
+    background: none;
+    border: none;
+  }
+}

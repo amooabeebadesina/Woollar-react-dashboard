@@ -1,0 +1,25 @@
+@import "../../../styles/variables";
+
+.dashboard {
+  position: relative;
+
+  &__sidebar {
+    margin: 0;
+    width: 250px;
+    background-color: $primaryColor;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    border-right: 1px solid #9a9a9a;
+    box-shadow: 2px 3px 2px #aaaaaa;
+  }
+
+  &__body {
+    margin-left: 250px;
+  }
+
+  &__header {
+
+  }
+
+}

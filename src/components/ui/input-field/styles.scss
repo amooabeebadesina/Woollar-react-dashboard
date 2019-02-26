@@ -1,0 +1,11 @@
+@import "../../../styles/variables";
+
+.input-container input {
+  width: 100%;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background: $white !important;
+  font-size: $base-font-size + 2;
+}
