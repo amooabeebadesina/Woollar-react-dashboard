@@ -10,7 +10,6 @@ import type { JSONResponse } from '../types/response';
 const login = (data: LoginRequest) => (dispatch) => {
   AuthService.login(data)
     .then((res: JSONResponse) => {
-      this.setState({ _loading: false });
       console.log(res);
     }).catch((err) => {
       console.log(err);
