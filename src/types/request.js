@@ -5,7 +5,13 @@ type LoginRequest = {
   password: string,
 };
 
+type CreateStoreRequest = {
+  name: string,
+  locations: Array<string>
+}
+
 
 export {
   LoginRequest,
+  CreateStoreRequest,
 };

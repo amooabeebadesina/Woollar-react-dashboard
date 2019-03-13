@@ -1,25 +1,30 @@
 // @flow
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import {
   Card, Image, InputField, Button,
 } from '../../ui';
 import './styles.scss';
+import type { LoginRequest } from '../../../types/request';
 import { login } from '../../../actions/user';
 
 type State = {
   email: string,
   password: string,
-  _loading: boolean,
 }
 
-class Index extends PureComponent<{}, State> {
+type Props = {
+  login: Function,
+  loading: boolean,
+}
+
+class Login extends PureComponent<Props, State> {
   state = {
     email: '',
     password: '',
-    _loading: false,
   };
 
-  handleInputChange = (e: Event) => {
+  handleInputChange = (e: any) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
@@ -29,12 +34,12 @@ class Index extends PureComponent<{}, State> {
       email: this.state.email,
       password: this.state.password,
     };
-    this.setState({ _loading: true });
-    dispatch(login(data));
+    this.props.login(data);
   };
 
   render() {
     const { email, password, _loading } = this.state;
+    const { loading } = this.props;
     return (
       <div className="login-container">
         <div className="login-form">
@@ -65,7 +70,7 @@ class Index extends PureComponent<{}, State> {
                 type="submit"
                 size="lg"
                 text="Login"
-                disabled={_loading}
+                disabled={loading}
                 loading={_loading}
                 classNames="button--blue"
                 onClick={this.submitForm}
@@ -78,4 +83,12 @@ class Index extends PureComponent<{}, State> {
   }
 }
 
-export default Index;
+const mapStateToProps = state => ({
+  loading: state.loading.value,
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: (data: LoginRequest) => dispatch(login(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

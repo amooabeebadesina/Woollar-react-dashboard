@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+.loader {
+  position:fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &__icon {
+    z-index: 1000;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(150, 150, 150, 0.5);
+
+    svg {
+      z-index: 1000;
+    }
+  }
+}
