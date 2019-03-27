@@ -26,9 +26,9 @@ jobs:
         - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
 
-    - run:
-        name: Run Linter
-        command: npm run lint
+#    - run:
+#        name: Run Linter
+#        command: npm run lint
 
     - run:
         name: Install flow type
