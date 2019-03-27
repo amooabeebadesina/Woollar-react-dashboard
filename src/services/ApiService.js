@@ -1,28 +1,24 @@
 import axios from 'axios';
-import store from '../store';
-import { startLoading, stopLoading } from '../actions/loading';
+import { getTokenFromStorage, logoutUser } from '../utils/helpers';
 
 const ApiService = axios.create({
   baseURL: 'https://woollar.com/api',
+  headers: {
+    authorization: getTokenFromStorage(),
+  },
 });
 
-ApiService.interceptors.request.use((req) => {
-  store.dispatch(startLoading());
-  return req;
-});
+ApiService.interceptors.request.use(req => req);
 
-ApiService.interceptors.response.use((res) => {
-  store.dispatch(stopLoading());
-  return res;
-}, (err) => {
-  store.dispatch(stopLoading());
+ApiService.interceptors.response.use(res => res, (err) => {
   switch (err.response.status) {
     case 401:
-      if (err.config.url === `${err.config.baseURL}/login`) {
-        console.log('unauthorized');
+      if (err.config.url !== `${err.config.baseURL}/login`) {
+        //logoutUser();
       }
       break;
     default:
+      return err;
   }
   return err;
 });

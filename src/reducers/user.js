@@ -1,14 +1,13 @@
 // @flow
-
 import {
   LOGIN_USER, LOGOUT_USER,
 } from '../constants/actiontypes';
 import type { Action } from '../types/action';
 
 const initialState = {
-  profile: '',
+  profile: null,
   loggedIn: false,
-}
+};
 
 const userReducer = (state: any = initialState, action: Action) => {
   let newState;
@@ -16,7 +15,7 @@ const userReducer = (state: any = initialState, action: Action) => {
     case LOGIN_USER:
       newState = {
         ...state,
-        profile: action.payload,
+        profile: action.payload.user,
         loggedIn: true,
       };
       break;

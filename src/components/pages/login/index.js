@@ -38,7 +38,7 @@ class Login extends PureComponent<Props, State> {
   };
 
   render() {
-    const { email, password, _loading } = this.state;
+    const { email, password } = this.state;
     const { loading } = this.props;
     return (
       <div className="login-container">
@@ -71,7 +71,7 @@ class Login extends PureComponent<Props, State> {
                 size="lg"
                 text="Login"
                 disabled={loading}
-                loading={_loading}
+                loading={false}
                 classNames="button--blue"
                 onClick={this.submitForm}
               />

@@ -5,9 +5,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-middleware": "^0.3.1",
+    "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
+    "history": "^4.9.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.1",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.1",
     "react-loader-spinner": "^2.3.0",
     "react-redux": "^6.0.1",

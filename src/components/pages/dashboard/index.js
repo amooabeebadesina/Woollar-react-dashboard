@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from './header';
 import Sidebar from './sidebar';
 import './styles.scss';
 import Routes from './routes';
-
 
 const Dashboard = (props: any) => (
   <div className="dashboard">
@@ -21,4 +21,8 @@ const Dashboard = (props: any) => (
   </div>
 );
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(Dashboard);

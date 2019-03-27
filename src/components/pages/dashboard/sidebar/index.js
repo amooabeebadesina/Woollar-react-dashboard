@@ -1,7 +1,9 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { NavLink, Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { NavLink, Link } from 'react-router-dom';
 import './styles.scss';
+import { logout } from '../../../../actions/user';
 
 type SideLinks = {
   to: string,
@@ -9,8 +11,8 @@ type SideLinks = {
   icon: string,
 };
 
-type State = {
-  _redirect: boolean;
+type Props = {
+  logout: () => {}
 }
 
 const links = [
@@ -35,21 +37,9 @@ const SidebarLink = (props: SideLinks) => (
   </div>
 );
 
-class Sidebar extends PureComponent<{}, State> {
-  state = {
-    _redirect: false,
-  };
-
-  redirect = () => {
-    const { _redirect } = this.state;
-    if (_redirect) {
-      return <Redirect to="/" />;
-    }
-    return null;
-  };
-
+class Sidebar extends PureComponent<Props> {
   logout = () => {
-    this.setState({ _redirect: true });
+    this.props.logout();
   };
 
   render() {
@@ -58,7 +48,6 @@ class Sidebar extends PureComponent<{}, State> {
         <div className="sidebar__logo">
           Woollar
         </div>
-        { this.redirect() }
         <div className="sidebar-links">
           {
             links.map(link => (
@@ -76,4 +65,8 @@ class Sidebar extends PureComponent<{}, State> {
   }
 }
 
-export default Sidebar;
+const mapDispatchToProps = dispatch => ({
+  logout: () => (dispatch(logout())),
+});
+
+export default connect(null, mapDispatchToProps)(Sidebar);
