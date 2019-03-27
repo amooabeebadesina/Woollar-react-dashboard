@@ -25,12 +25,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "flow": "flow",
+    "flow:typed": "flow-typed install axios@0.18.x classnames@2.2.x react-router-dom@4.x.x",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "stylelint": "stylelint 'src/styles/*.scss'"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

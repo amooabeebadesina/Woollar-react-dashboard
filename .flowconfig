@@ -4,12 +4,11 @@
 .*/bin/*
 .*/public/*
 .*/routes/*
+
 [include]
 
 [libs]
 ./flow-typed/
-
-[lints]
 
 [options]
 module.file_ext=.js

@@ -1,10 +1,11 @@
 // @flow
 import { startLoading, stopLoading } from './loading';
-import DashboardService from '../services/DashboardService';
+import { DashboardService } from '../services';
 import { isSuccess, statusSuccess } from '../utils/api-response';
 import { POPULATE_DASHBOARD } from '../constants/actiontypes';
+import type { Dispatch } from '../types/action';
 
-const getDashboardData = () => (dispatch) => {
+const getDashboardData = () => (dispatch: Dispatch) => {
   dispatch(startLoading());
   DashboardService.getDashboardData()
     .then((res) => {
@@ -22,6 +23,7 @@ const getDashboardData = () => (dispatch) => {
     });
 };
 
+/* eslint-disable import/prefer-default-export */
 export {
   getDashboardData,
 };

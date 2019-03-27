@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from './header';
 import Sidebar from './sidebar';
 import './styles.scss';
+// $FlowFixMe
 import Routes from './routes';
 
 const Dashboard = (props: any) => (

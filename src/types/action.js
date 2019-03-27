@@ -1,10 +1,8 @@
 // @flow
 
-type Action = {
+export type Action = {
   type: string,
   payload: any,
 };
 
-export {
-  Action
-};
+export type Dispatch = (action: Action) => void;

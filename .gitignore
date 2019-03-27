@@ -11,6 +11,9 @@
 # production
 /build
 
+# flow typed
+/flow-typed/npm/*
+
 # misc
 .DS_Store
 .env.local

@@ -31,6 +31,10 @@ jobs:
         command: npm run lint
 
     - run:
+        name: Install flow type
+        command: npm run flow:typed
+
+    - run:
         name: Run flow
         command: npm run flow
 

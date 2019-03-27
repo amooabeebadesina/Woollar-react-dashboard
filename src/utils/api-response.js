@@ -14,7 +14,10 @@ const isSuccess = (res: any) => res.data && res.data.data;
  */
 const statusSuccess = (res: any) => res.data && res.data.data && res.data.data.status === 'success';
 
+const getResponseData = (res: any) => res.data.data;
+
 export {
   isSuccess,
   statusSuccess,
+  getResponseData,
 };

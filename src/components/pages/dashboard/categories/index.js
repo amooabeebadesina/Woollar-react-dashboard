@@ -1,15 +1,9 @@
 // @flow
-import React, { PureComponent } from 'react';
+import React from 'react';
 import './styles.scss';
 
-
-class Categories extends PureComponent<>{
-
-  render() {
-    return (
-      <div>Hello Home</div>
-    );
-  }
-}
+const Categories = () => (
+  <div>Hello Home</div>
+);
 
 export default Categories;

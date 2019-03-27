@@ -3,8 +3,7 @@ import React, { PureComponent } from 'react';
 import './styles.scss';
 
 
-class Orders extends PureComponent<>{
-
+class Orders extends PureComponent<{}> {
   render() {
     return (
       <div>Hello Orders</div>

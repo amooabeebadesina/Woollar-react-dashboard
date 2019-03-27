@@ -11,7 +11,7 @@ type Props = {
   titleColor?: 'blue' | 'red' | 'transparent'
 }
 
-const CardTitle = (props: {title: string, titleColor: string}) => (
+const CardTitle = (props: any) => (
   <div className="card__title">
     <div className={classNames(`card__title--${props.titleColor}`)}>
       { props.title }
@@ -21,7 +21,7 @@ const CardTitle = (props: {title: string, titleColor: string}) => (
 
 const Card = (props: Props) => (
   <div className="card">
-    { props.title && <CardTitle title={props.title} titleColor={props.titleColor} /> }
+    { props.title && <CardTitle {...props} /> }
     <div className={classNames('card-container',
       { 'card-container--gutter': props.gutter })}
     >
@@ -33,7 +33,7 @@ const Card = (props: Props) => (
 Card.defaultProps = {
   title: '',
   titleColor: 'transparent',
-  children: Node,
+  children: '',
 };
 
 export default Card;

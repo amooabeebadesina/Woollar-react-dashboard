@@ -5,16 +5,19 @@ import {
 import { AuthService } from '../services';
 import { startLoading, stopLoading } from './loading';
 import { saveTokenToStorage, history, logoutUser } from '../utils/helpers';
+import { getResponseData, isSuccess, statusSuccess } from '../utils/api-response';
+import type { LoginRequest } from '../types/request';
+import type { Dispatch } from '../types/action';
 
-const login = (request: any) => (dispatch) => {
+const login = (request: LoginRequest) => (dispatch: Dispatch) => {
   dispatch(startLoading());
   const data = { ...request, type: 'WOOLLAR' };
   AuthService.login(data)
     .then((res) => {
       dispatch(stopLoading());
-      if (res && res.data && res.data.data) {
+      if (isSuccess(res) && statusSuccess(res)) {
         // eslint-disable-next-line
-        const { meta, token_data } = res.data.data;
+        const { meta, token_data } = getResponseData(res);
         dispatch({
           type: LOGIN_USER,
           payload: { user: { ...meta } },
@@ -27,10 +30,11 @@ const login = (request: any) => (dispatch) => {
     });
 };
 
-const logout = () => (dispatch) => {
+const logout = () => (dispatch: Dispatch) => {
   logoutUser();
   dispatch({
     type: LOGOUT_USER,
+    payload: null,
   });
 };
 
