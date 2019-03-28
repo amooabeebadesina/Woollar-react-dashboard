@@ -26,9 +26,9 @@ jobs:
         - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
 
-#    - run:
-#        name: Run Linter
-#        command: npm run lint
+    #    - run:
+    #        name: Run Linter
+    #        command: npm run lint
 
     - run:
         name: Install flow type
@@ -40,28 +40,28 @@ jobs:
 
   deploy_prod:
     docker:
-      - image: circleci/node:10-browsers-legacy
+    - image: circleci/node:10-browsers-legacy
 
-     steps:
-      - checkout
+    steps:
+    - checkout
 
-      - deploy:
-          commands:
-          - echo 'deploying master branch'
-          - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
-          - ls
+    - deploy:
+        commands:
+        - echo 'deploying master branch'
+        - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
+        - ls
 
 
 workflows:
   version: 2
   build_deploy:
     jobs:
-      - build
-      - deploy_prod:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+    - build
+    - deploy_prod:
+        requires:
+        - build
+        filters:
+          branches:
+            only: master
 
 
