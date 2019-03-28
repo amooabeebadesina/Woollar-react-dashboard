@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getTokenFromStorage, logoutUser } from '../utils/helpers';
+import { getTokenFromStorage } from '../utils/helpers';
 
 const ApiService = axios.create({
   baseURL: 'https://woollar.com/api',
