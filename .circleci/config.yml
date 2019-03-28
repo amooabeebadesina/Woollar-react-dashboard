@@ -49,7 +49,7 @@ jobs:
         fingerprints:
         - $SSH_FINGERPRINT
 
-    - deploy:
+    - run:
         name: Deploy to server
         command: |
           ssh -o StrictHostKeyChecking=no 157.230.28.204
