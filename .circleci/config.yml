@@ -53,6 +53,8 @@ jobs:
         name: Deploy to server
         command: |
           ssh -o StrictHostKeyChecking=no 157.230.28.204
+          echo $DROPLET_USER
+          echo $DROPLET_IP
           ssh -v $DROPLET_USER@$DROPLET_IP
 
 
