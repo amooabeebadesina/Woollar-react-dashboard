@@ -62,7 +62,9 @@ jobs:
 
     - run:
         name: Deploy to server
-        command: ssh -v $DROPLET_USER@$DROPLET_IP
+        command: |
+          ssh -v $DROPLET_USER@$DROPLET_IP
+          echo "exit"
 
     - add_ssh_keys:
         fingerprints:
