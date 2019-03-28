@@ -65,6 +65,7 @@ jobs:
         command: |
           ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
           git pull
+          npm install
           npm run build
           exit 1
 
