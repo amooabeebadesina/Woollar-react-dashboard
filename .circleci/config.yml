@@ -57,11 +57,12 @@ jobs:
         key: v1-dependencies-{{ checksum "package-lock.json" }}
 
     - run:
-        name: Deploy to server
-        command: echo $CIRCLE_BRANCH
+        name: Avoid unknown hosts for server
+        command: mkdir ~/.ssh/ && echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-    - run: echo $CIRCLE_BRANCH
-    - run: echo $DROPLET_USER
+    - run:
+        name: Deploy to server
+        command: ssh -v $DROPLET_USER@$DROPLET_IP
 
     - add_ssh_keys:
         fingerprints:
