@@ -64,7 +64,10 @@ jobs:
         name: Deploy to server
         command: |
           ssh -v $DROPLET_USER@$DROPLET_IP
-          echo "exit"
+          cd "/Woollar-react-dashboard"
+          git pull
+          npm run build
+          exit
 
     - add_ssh_keys:
         fingerprints:
