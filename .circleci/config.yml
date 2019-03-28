@@ -55,7 +55,6 @@ jobs:
 
     - run: echo $CIRCLE_BRANCH
     - run: echo $DROPLET_USER
-    - run: ssh -v $DROPLET_USER@$DROPLET_IP
 
 
 workflows:
