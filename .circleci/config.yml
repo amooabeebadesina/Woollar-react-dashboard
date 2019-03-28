@@ -56,6 +56,12 @@ jobs:
         - node_modules
         key: v1-dependencies-{{ checksum "package-lock.json" }}
 
+    - run:
+        name: Deploy to server
+
+    - run: echo $CIRCLE_BRANCH
+    - run: echo $DROPLET_USER
+
     - add_ssh_keys:
         fingerprints:
         - $SSH_FINGERPRINT
