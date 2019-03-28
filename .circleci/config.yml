@@ -58,6 +58,7 @@ jobs:
 
     - run:
         name: Deploy to server
+        command: echo $CIRCLE_BRANCH
 
     - run: echo $CIRCLE_BRANCH
     - run: echo $DROPLET_USER
