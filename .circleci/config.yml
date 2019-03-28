@@ -52,8 +52,8 @@ jobs:
     - deploy:
         name: Deploy to server
         command: |
-          echo '157.230.28.204 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBApRwfz3H5y2
-          roV11fjQTZTuhD8nnA5a8XHCV/widp4MPkFyg3Odmd5ggUmhnjyP7bRzay0T7aiqWJcaUn5nUnw=' >> ~/.ssh/known_hosts
+          echo '157.230.28.204 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBApRwfz3H5y2roV11fjQTZTuhD8nnA5a8XHCV/widp4MPkFyg3Odmd5ggUmhnjyP7bRzay0T7aiqWJcaUn5nUnw=' >> ~/.ssh/known_hosts
+          ssh -o StrictHostKeyChecking=no 157.230.28.204
           ssh -v $DROPLET_USER@$DROPLET_IP
 
 
