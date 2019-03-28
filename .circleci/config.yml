@@ -38,12 +38,30 @@ jobs:
         name: Run flow
         command: npm run flow
 
+  deploy_prod:
+    docker:
+    - image: circleci/node:10-browsers-legacy
 
-deployment:
-  master:
-    branch: master
-    commands:
-    - echo 'deploying master branch'
-    - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
-    - ls
+     steps:
+       - checkout
+
+       - deploy:
+          commands:
+          - echo 'deploying master branch'
+          - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
+          - ls
+
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+      - deploy_prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
 
