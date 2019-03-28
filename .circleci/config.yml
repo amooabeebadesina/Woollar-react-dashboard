@@ -40,12 +40,12 @@ jobs:
 
   deploy_prod:
     docker:
-    - image: circleci/node:10-browsers-legacy
+      - image: circleci/node:10-browsers-legacy
 
      steps:
-       - checkout
+      - checkout
 
-       - deploy:
+      - deploy:
           commands:
           - echo 'deploying master branch'
           - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
