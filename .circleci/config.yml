@@ -51,11 +51,10 @@ jobs:
 
     - run:
         name: Deploy to server
-        command: |
-          ssh -o StrictHostKeyChecking=no 157.230.28.204
-          echo $DROPLET_USER
-          echo $DROPLET_IP
-          ssh -v $DROPLET_USER@$DROPLET_IP
+        command: ssh -o StrictHostKeyChecking=no $DROPLET_IP
+
+    - run: echo $DROPLET_USER
+    - run: ssh -v $DROPLET_USER@$DROPLET_IP
 
 
 workflows:
