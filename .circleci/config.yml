@@ -51,6 +51,8 @@ jobs:
 
     - deploy:
         command: |
+          echo 'http://157.230.28.204 ecdsa-sha2-nistp256 ~/.ssh/id_ecdsa.pub' >> ~/.ssh/known_hosts
+          echo 'http://157.230.28.204 ssh-rsa ~/.ssh/id_rsa.pub' >> ~/.ssh/known_hosts
           ssh -v $DROPLET_USER@$DROPLET_IP
 
 
