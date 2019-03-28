@@ -45,8 +45,14 @@ jobs:
     steps:
     - checkout
 
+    - add_ssh_keys:
+        fingerprints:
+        - $SSH_FINGERPRINT
+
     - deploy:
-        command: ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
+        command: |
+          ssh -v $DROPLET_USER@$DROPLET_IP
+
 
 workflows:
   version: 2
