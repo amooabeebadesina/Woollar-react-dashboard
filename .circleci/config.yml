@@ -46,11 +46,7 @@ jobs:
     - checkout
 
     - deploy:
-        commands:
-        - echo 'deploying master branch'
-        - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
-        - ls
-
+        command: ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
 
 workflows:
   version: 2
