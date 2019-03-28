@@ -58,7 +58,7 @@ jobs:
 
     - run:
         name: Avoid unknown hosts for server
-        command: echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+        command: echo -e "Host $DROPLET_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
     - run:
         name: Deploy to server
