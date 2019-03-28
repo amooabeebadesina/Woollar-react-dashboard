@@ -38,3 +38,12 @@ jobs:
         name: Run flow
         command: npm run flow
 
+
+deployment:
+  master:
+    branch: master
+    commands:
+    - echo 'deploying master branch'
+    - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/Woollar-react-dashboard;"
+    - ls
+
