@@ -15,8 +15,6 @@ const getDashboardData = () => (dispatch: Dispatch) => {
           type: POPULATE_DASHBOARD,
           payload: res.data.data,
         });
-      } else {
-        console.log('yee');
       }
     }, (err) => {
       dispatch(stopLoading());
