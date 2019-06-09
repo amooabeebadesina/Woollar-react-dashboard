@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import './styles.scss';
-import { logout } from '../../../../actions/user';
+import { bindActionCreators } from 'redux';
+import { authActions } from '../../../../actions';
 
 type SideLinks = {
   to: string,
@@ -12,7 +13,7 @@ type SideLinks = {
 };
 
 type Props = {
-  logout: () => {}
+  authActions: Object<Function>
 }
 
 const links = [
@@ -39,7 +40,7 @@ const SidebarLink = (props: SideLinks) => (
 
 class Sidebar extends PureComponent<Props> {
   logout = () => {
-    this.props.logout();
+    this.props.authActions.logout();
   };
 
   render() {
@@ -66,7 +67,7 @@ class Sidebar extends PureComponent<Props> {
 }
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => (dispatch(logout())),
+  authActions: bindActionCreators(authActions, dispatch)
 });
 
 export default connect(null, mapDispatchToProps)(Sidebar);

@@ -1,29 +1,26 @@
 // @flow
 import {
-  LOGIN_USER, LOGOUT_USER,
+  LOGIN_SUCCESS, LOGOUT_USER,
 } from '../constants/actiontypes';
 import type { Action } from '../types/action';
 
 const initialState = {
-  profile: null,
-  loggedIn: false,
+  user: null,
 };
 
-const userReducer = (state: any = initialState, action: Action) => {
+const authReducer = (state: any = initialState, action: Action) => {
   let newState;
   switch (action.type) {
-    case LOGIN_USER:
+    case LOGIN_SUCCESS:
       newState = {
         ...state,
-        profile: action.payload.user,
-        loggedIn: true,
+        user: action.payload.data,
       };
       break;
     case LOGOUT_USER:
       newState = {
         ...state,
-        profile: null,
-        loggedIn: false,
+        user: null,
       };
       break;
     default:
@@ -32,4 +29,4 @@ const userReducer = (state: any = initialState, action: Action) => {
   return newState;
 };
 
-export default userReducer;
+export default authReducer;

@@ -8,19 +8,18 @@ const ApiService = axios.create({
   },
 });
 
+const handleResponse = (res) => {
+  const response = res.data;
+  if (response.status === 'success') {
+    return response.data;
+  }
+  return Promise.reject(response.msg);
+};
+
+const handleError = err => Promise.reject(err.response.data.msg);
+
 ApiService.interceptors.request.use(req => req);
 
-ApiService.interceptors.response.use(res => res, (err) => {
-  switch (err.response.status) {
-    case 401:
-      if (err.config.url !== `${err.config.baseURL}/login`) {
-        // logoutUser();
-      }
-      break;
-    default:
-      return err;
-  }
-  return err;
-});
+ApiService.interceptors.response.use(res => handleResponse(res), err => handleError(err));
 
 export default ApiService;

@@ -1,27 +1,30 @@
 // @flow
-import { startLoading, stopLoading } from './loading';
+import { push } from 'connected-react-router';
+import loadingActions  from './loading';
 import { DashboardService } from '../services';
-import { isSuccess, statusSuccess } from '../utils/api-response';
 import { POPULATE_DASHBOARD } from '../constants/actiontypes';
 import type { Dispatch } from '../types/action';
+import alertActions from './alert';
 
-const getDashboardData = () => (dispatch: Dispatch) => {
-  dispatch(startLoading());
-  DashboardService.getDashboardData()
-    .then((res) => {
-      dispatch(stopLoading());
-      if (isSuccess(res) && statusSuccess(res)) {
-        dispatch({
-          type: POPULATE_DASHBOARD,
-          payload: res.data.data,
-        });
-      }
-    }, (err) => {
-      dispatch(stopLoading());
-    });
+const getDashboardData = () => {
+  const success = data => ({ type: POPULATE_DASHBOARD, payload: data });
+
+  return (dispatch: Dispatch) => {
+    dispatch(loadingActions.startLoading());
+    DashboardService.getDashboardData()
+      .then((res) => {
+        dispatch(loadingActions.stopLoading());
+        dispatch(success(res));
+        dispatch(push('/dashboard/home'));
+      }, (err) => {
+        dispatch(loadingActions.stopLoading());
+        dispatch(alertActions.errorAlert(err));
+      });
+  };
 };
 
-/* eslint-disable import/prefer-default-export */
-export {
+const dashboardActions = {
   getDashboardData,
 };
+
+export default dashboardActions;

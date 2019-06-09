@@ -1,7 +1,3 @@
-import { createBrowserHistory } from 'history';
-
-const history = createBrowserHistory();
-
 /**
  * Get the jwt from localstorage
  * @returns {object | *}
@@ -9,18 +5,21 @@ const history = createBrowserHistory();
 const getTokenFromStorage = () => {
   const token = localStorage.getItem('auth-token');
   if (token) {
-    const parsedToken = JSON.parse(token);
-    return parsedToken.token;
+    return JSON.parse(token);
   }
   return null;
 };
 
 /**
  * Saves the token to localstorage
- * @param {object} token
+ * @param {object} authData
  */
-const saveTokenToStorage = (token) => {
-  localStorage.setItem('auth-token', JSON.stringify(token));
+const saveTokenToStorage = (authData) => {
+  // eslint-disable-next-line
+  const { meta, token_data } = authData;
+  localStorage.setItem('auth-token', JSON.stringify(token_data.token));
+  localStorage.setItem('expiry', JSON.stringify(token_data.expires));
+  localStorage.setItem('profile', JSON.stringify(meta));
 };
 
 /**
@@ -28,7 +27,8 @@ const saveTokenToStorage = (token) => {
  */
 const logoutUser = () => {
   localStorage.removeItem('auth-token');
-  history.push('/login');
+  localStorage.removeItem('expiry');
+  localStorage.removeItem('profile');
 };
 
 /**
@@ -39,7 +39,6 @@ const isLoggedIn = () => localStorage.getItem('auth-token');
 
 
 export {
-  history,
   getTokenFromStorage,
   saveTokenToStorage,
   logoutUser,

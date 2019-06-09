@@ -1,16 +1,18 @@
 // @flow
 import React, { PureComponent } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getDashboardData } from '../../../../actions/dashboard';
+import { dashboardActions } from '../../../../actions';
 import './styles.scss';
 
+
 type Props = {
-  getDashboardData: () => {}
+  dashboardActions: Object<Function>
 }
 
 class Home extends PureComponent<Props> {
   componentDidMount() {
-    this.props.getDashboardData();
+    this.props.dashboardActions.getDashboardData();
   }
 
   render() {
@@ -25,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getDashboardData: () => dispatch(getDashboardData()),
+  dashboardActions: bindActionCreators(dashboardActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

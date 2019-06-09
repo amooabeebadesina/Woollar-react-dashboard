@@ -1,12 +1,12 @@
 // @flow
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
   Card, Image, InputField, Button,
 } from '../../ui';
 import './styles.scss';
-import type { LoginRequest } from '../../../types/request';
-import { login } from '../../../actions/user';
+import { authActions } from '../../../actions';
 
 type State = {
   email: string,
@@ -14,7 +14,7 @@ type State = {
 }
 
 type Props = {
-  login: Function,
+  authActions: Object<Function>,
   loading: boolean,
 }
 
@@ -34,7 +34,7 @@ class Login extends PureComponent<Props, State> {
       email: this.state.email,
       password: this.state.password,
     };
-    this.props.login(data);
+    this.props.authActions.login(data);
   };
 
   render() {
@@ -88,7 +88,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: (data: LoginRequest) => dispatch(login(data)),
+  authActions: bindActionCreators(authActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
